@@ -1,0 +1,126 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
+  <PropertyGroup>
+    <ProjectGuid>{E01CC7D1-E6DE-480D-A4F0-1A716CABB2A6}</ProjectGuid>
+    <ProjectTypeGuids>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>SmsSender</RootNamespace>
+    <AssemblyName>SmsSender</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Platform)' == 'AnyCPU' ">
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <DebugSymbols>True</DebugSymbols>
+    <DebugType>Full</DebugType>
+    <Optimize>False</Optimize>
+    <CheckForOverflowUnderflow>True</CheckForOverflowUnderflow>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <DebugSymbols>False</DebugSymbols>
+    <DebugType>None</DebugType>
+    <Optimize>True</Optimize>
+    <CheckForOverflowUnderflow>False</CheckForOverflowUnderflow>
+    <DefineConstants>TRACE</DefineConstants>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Atechnology.Components">
+      <HintPath>..\..\Atechnology\Atechnology.Components.dll</HintPath>
+    </Reference>
+    <Reference Include="Atechnology.DBConnection">
+      <HintPath>..\..\Atechnology\Atechnology.DBConnection.dll</HintPath>
+    </Reference>
+    <Reference Include="Atechnology.ecad.Dictionary">
+      <HintPath>..\..\Atechnology\Atechnology.ecad.Dictionary.dll</HintPath>
+    </Reference>
+    <Reference Include="Atechnology.ecad.Document">
+      <HintPath>..\..\Atechnology\Atechnology.ecad.Document.dll</HintPath>
+    </Reference>
+    <Reference Include="Atechnology.ecad.Report">
+      <HintPath>..\..\Atechnology\Atechnology.ecad.Report.dll</HintPath>
+    </Reference>
+    <Reference Include="Atechnology.ecad.Settings">
+      <HintPath>..\..\Atechnology\Atechnology.ecad.Settings.dll</HintPath>
+    </Reference>
+    <Reference Include="Atechnology.Logging">
+      <HintPath>..\..\Atechnology\Atechnology.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="ObjectListView, Version=2.9.1.1072, Culture=neutral, PublicKeyToken=b1c5bf581481bcd4">
+      <HintPath>..\ObjectListViewFull-2.9.1\ObjectListView.dll</HintPath>
+    </Reference>
+    <Reference Include="SandDock">
+      <HintPath>..\..\Atechnology\SandDock.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AtLogWriter.cs" />
+    <Compile Include="DeliveryMailingForm.cs" />
+    <Compile Include="DeliveryMailingForm.Designer.cs">
+      <DependentUpon>DeliveryMailingForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MailingListView.cs" />
+    <Compile Include="MainForm.cs" />
+    <Compile Include="MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\icons.Designer.cs">
+      <DependentUpon>icons.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="SmsMail.cs" />
+    <Compile Include="SmsResponse.cs" />
+    <Compile Include="SmsRuManager.cs" />
+    <Compile Include="smsru\Enumerations\EnumAuthenticationTypes.cs" />
+    <Compile Include="smsru\Enumerations\EnumResponseCodes.cs" />
+    <Compile Include="smsru\Helpers\ConvertersHelper.cs" />
+    <Compile Include="smsru\Helpers\HashCodeHelper.cs" />
+    <Compile Include="smsru\Helpers\TimeHelper.cs" />
+    <Compile Include="smsru\ISmsProvider.cs" />
+    <Compile Include="smsru\SmsRuProvider.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="smsru" />
+    <Folder Include="smsru\Enumerations" />
+    <Folder Include="smsru\Helpers" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="DeliveryMailingForm.resx">
+      <DependentUpon>DeliveryMailingForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\icons.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>icons.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
